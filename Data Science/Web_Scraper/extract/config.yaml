@@ -1,0 +1,100 @@
+sites:
+  MercadoLibre:
+    url: 'https://celulares.mercadolibre.com.co/_ITEM*CONDITION_2230284_NoIndex_True'
+    max_items: 5
+    pagination:
+      active: true
+      link: 'https://celulares.mercadolibre.com.co/_Desde_101_ITEM*CONDITION_2230284_NoIndex_True'
+      parametes_link: Desde_
+      max_page: 999999
+      min_page: 51
+      step: 50
+    queries:
+      items:
+        selector: .item__info a
+        return_type: attr
+        value: href
+      fields:
+        - key: title
+          selector: h1.item-title__primary
+        - key: brank
+          selector: '.specs-item span:nth-of-type(1)'
+        - key: price
+          selector: .price-tag-fraction
+        - key: color
+          selector: '[data-js="variations-title"]'
+        - key: opinions
+          selector: '.average-legend > span'
+        - key: average_opinions
+          selector: '.review-summary-average'
+        - key: raw_description
+          selector: .item-description__text
+        - key: seller
+          selector: '#seller-view-more-link'
+          return_type: attr
+          value: href
+  Alkosto:
+    url: 'https://www.alkosto.com/telefonos-celulares'
+    max_items: 5
+    pagination:
+      active: true
+      link: 'https://www.alkosto.com/telefonos-celulares?p=5'
+      parametes_link: 'p='
+      max_page: 99999999
+      min_page: 2
+      step: 1
+    queries:
+      items:
+        selector: .product-name a
+        return_type: attr
+        value: href
+      fields:
+        - key: title
+          selector: .product-name h1
+        - key: brank
+          selector: '#product-attribute-specs-table td'
+        - key: price
+          selector: .price span
+        - key: color
+          selector: '#product-attribute-specs-table > tbody > tr:nth-child(24) > td'
+        - key: opinions
+          selector: '#product_addtocart_form span[itemprop="ratingCount"]'
+        - key: average_opinions
+          selector: '#product_addtocart_form span[itemprop="ratingValue"]'
+        - key: raw_description
+          selector: '[itemprop="description"]'
+        - key: seller
+          selector: .link-low-md
+          default: Alkosto
+  Linio:
+    url: 'https://www.linio.com.co/c/celulares-y-smartphones/celulares-desbloqueados?condition_type=Nuevo&sortBy=relevance'
+    max_items: 5
+    pagination:
+      active: true
+      link: 'https://www.linio.com.co/c/celulares-y-tablets?qid=74168e2c19a4f7a3b564dd2c108a3914&oid=6T0261F3EY7C0723755135796&position=3&sku=MO087EL0WWJYSLCO&page=2'
+      parametes_link: page=
+      max_page: 9999999
+      min_page: 2
+      step: 1
+    queries:
+      items:
+        selector: '#catalogue-product-container a'
+        return_type: attr
+        value: href
+      fields:
+        - key: title
+          selector: 'span[class="product-name"]'
+        - key: brank
+          selector: 'a[itemprop="brand"]'
+        - key: price
+          selector: 'span[class="price-main-md"]'
+        - key: color
+          selector: '.features-box-section .feature:nth-child(5) div:nth-child(2)'
+        - key: opinions
+          selector: '.chart-count'
+        - key: average_opinions
+          selector: '[class="review-subtitle-label col-xs-2"]'
+        - key: raw_description
+          selector: 'div[itemprop="description"]'
+        - key: seller
+          selector: .seller-name-rating-section > a
