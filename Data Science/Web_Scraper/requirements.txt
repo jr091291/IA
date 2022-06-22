@@ -7,7 +7,7 @@ get==2019.4.13
 idna==2.9
 joblib==0.15.1
 nltk==3.5
-numpy==1.18.5
+numpy==1.22.0
 pandas==1.0.4
 pipe==1.5.0
 post==2019.4.13
